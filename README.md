@@ -1,6 +1,6 @@
 # replacementsdemo
 
-This app takes the data submitted on the form and enters it into two flat-file databases. Why two? Because I thought it would be handy to both have a list of customers and their requests, along with just the pieces needed. It's possible different groups inside the organization will handle the customer relations or piece sorting, so this would accomodate that.
+This app takes the data submitted on the form and enters it into two flat-file databases. Why two? Because I thought it would be handy to both have a list of customers and their requests, along with just the pieces needed. It's possible different groups inside the organization will handle the customer relations or piece sorting, so this would accomodate that. A share request ID is shared across entries made in both databases. Also why flat-file? In this demo MySQL would have been overkill. I also wanted to get refamiliarized with manipulating flatfile databases, as lots of large datasets are in csv format.
 
 Index.html is the form where the user submits the information.
 
@@ -18,8 +18,16 @@ Updatecount.php is called on post, which checks the class values to see how many
 Updatecustomers.php is called on post, and calls in a variable with the location of the flat-file db, and then writes to it. This processes only includes one new line, so it doesnt need the advanced logic shown in updatecount.php
 
 
+listcount.php & customerlist.php - These two files assign a variable the flat-file db location to be used later. They also start some introductory manipulation of the data, exploding it into an array. Each have some features that are not complete that would allow us to see a table of the data. That code is currently commented out. These files could also be used in a version 2, where the array is looped through to match the piece requested, and then update the current amount needed. This would eliminate multiple lines, though a solution for the request ID storage would be needed. 
+
 
 
 The Flat File Databases
 The databases file databases for customers and peices are csrq.txt and npcount.txt respectively. 
 They are both in csv format, so they can be opened and sorted. 
+
+
+The Design
+This app calls in both a local css file, and bootstrap css from a CDN. The form uses bootstrap to ensure all elements are responsive. 
+
+
